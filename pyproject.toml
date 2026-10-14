@@ -5,24 +5,17 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "esp32-iphone-agent-telegram-bot"
 version = "0.1.0"
-description = "Telegram bot bridge for esp32-iphone-agent"
+description = "Control your ESP32 iPhone Agent remotely via Telegram bot."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text="MIT" }
 dependencies = [
     "python-telegram-bot>=20.7",
     "httpx>=0.25.0",
-    "python-dotenv>=1.0.0"
+    "anyio>=4.0.0",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "pytest>=7.0",
-    "ruff>=0.1.0"
-]
+[project.scripts]
+esp32-tg-bot = "esp32_iphone_agent_tg_bot.main:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.setuptools.package-data]
-"*" = ["*.env"]
